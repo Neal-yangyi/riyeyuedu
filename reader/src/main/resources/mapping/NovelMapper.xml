@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="novel" >
+    
+    <insert id="insertNovel" parameterType="NovelEntity" useGeneratedKeys="true" keyProperty="nid">
+        INSERT INTO novel (title, aid, lid, did, introduction, info, score, state, create_time, update_time, word_num, click_num, recommend_num, chapter_num, cover, recent_chapter_id)
+        VALUES (#{title}, #{aid}, #{lid}, #{did}, #{introduction}, #{info}, #{score}, #{state}, #{createTime}, #{updateTime}, #{wordNum}, #{clickNum}, #{recommendNum}, #{chaperNum}, #{cover}, #{recentChapterId})
+    </insert>
+    
+    <select id="getNovelByNid" resultMap="novelResultMap">
+        SELECT * FROM novel WHERE nid = #{nid}
+    </select>
+
+    <select id="getAllNovel" resultMap="novelResultMap">
+        SELECT * FROM novel
+    </select>
+
+    <select id="getNovelByTitle" resultMap="novelResultMap">
+        SELECT * FROM novel WHERE title= #{title}
+    </select>
+
+    <select id="getNovelByTitleWidly" resultType="HashMap">
+        SELECT novel.*, author.author_name, chapter.chapter_name
+        FROM novel INNER JOIN author ON novel.aid = author.aid
+        INNER JOIN chapter ON novel.recent_chapter_id = chapter.cid
+        WHERE novel.title LIKE concat('%', #{key}, '%')
+    </select>
+
+    <select id="getNovelByAuthor" resultType="HashMap">
+        SELECT novel.*, author.author_name, chapter.chapter_name
+        FROM novel RIGHT JOIN author ON novel.aid = author.aid
+            INNER JOIN chapter ON novel.recent_chapter_id = chapter.cid
+        WHERE author_name = #{key}
+    </select>
+
+    <select id="getNovelByLid" resultType="HashMap">
+        SELECT novel.*, author.author_name, label.label_name, chapter.chapter_name
+          FROM novel RIGHT JOIN label ON novel.lid = label.lid
+              INNER JOIN author ON novel.aid = author.aid
+              INNER JOIN chapter ON novel.recent_chapter_id = chapter.cid
+          WHERE label.lid = #{lid}
+        ORDER BY novel.click_num DESC
+        LIMIT 30
+    </select>
+
+    <select id="getNovelByLidRecent" resultType="HashMap">
+        SELECT novel.*, author.author_name, label.label_name, chapter.chapter_name
+        FROM novel RIGHT JOIN label ON novel.lid = label.lid
+        INNER JOIN author ON novel.aid = author.aid
+        INNER JOIN chapter ON novel.recent_chapter_id = chapter.cid
+        WHERE label.lid = #{lid}
+        ORDER BY novel.update_time DESC
+        LIMIT 30
+    </select>
+
+    <select id="getNovelByLidScore" resultType="HashMap">
+        SELECT novel.*, author.author_name
+        FROM novel RIGHT JOIN label ON novel.lid = label.lid
+        INNER JOIN author ON novel.aid = author.aid
+        WHERE label.lid = #{lid}
+        ORDER BY novel.score DESC
+        LIMIT 30
+    </select>
+
+    <select id="getNovelByRecent" resultType="HashMap">
+        SELECT novel.*, author.author_name, label.label_name, chapter.chapter_name
+        FROM novel INNER JOIN label ON novel.lid = label.lid
+            INNER JOIN author ON novel.aid = author.aid
+            INNER JOIN chapter ON novel.recent_chapter_id = chapter.cid
+        ORDER BY update_time DESC LIMIT 30
+    </select>
+    
+    <select id="getNovelByScore" resultType="HashMap">
+        SELECT novel.*, author.author_name, label.label_name, chapter.chapter_name
+        FROM novel INNER JOIN label ON novel.lid = label.lid
+            INNER JOIN author ON novel.aid = author.aid
+            INNER JOIN chapter ON novel.recent_chapter_id = chapter.cid
+        ORDER BY score DESC LIMIT 90
+    </select>
+
+    <select id="getNovelByNew" resultType="HashMap">
+        SELECT novel.*, label.label_name
+        FROM novel INNER JOIN label ON novel.lid = label.lid
+        ORDER BY create_time ASC LIMIT 30
+    </select>
+
+    <select id="getNovelByState" resultType="HashMap">
+        SELECT novel.*, author.author_name, label.label_name, chapter.chapter_name
+        FROM novel INNER JOIN label ON novel.lid = label.lid
+            INNER JOIN author ON novel.aid = author.aid
+            INNER JOIN chapter ON novel.recent_chapter_id = chapter.cid
+        WHERE state = #{state}
+        ORDER BY novel.score DESC LIMIT 30
+    </select>
+
+    <select id="getNovelByClick" resultType="HashMap">
+        SELECT novel.*, author.author_name, label.label_name
+        FROM novel INNER JOIN label ON novel.lid = label.lid
+            INNER JOIN author ON novel.aid = author.aid
+        ORDER BY click_num DESC LIMIT 4
+    </select>
+
+    <select id="getNovelInBookCase" resultMap="novelResultMap">
+        SELECT novel.* FROM bookcase
+        INNER JOIN novel ON bookcase.nid = novel.nid
+        RIGHT JOIN reader ON bookcase.rid = reader.rid
+        WHERE bookcase.rid = #{rid}
+    </select>
+
+    <select id="getOneInBookCase" resultMap="novelResultMap">
+        SELECT * FROM novel
+        RIGHT JOIN bookcase ON novel.nid = bookcase.nid
+        WHERE bookcase.nid = #{nid} AND bookcase.rid = #{rid}
+    </select>
+    
+    <update id="addClickNum">
+        UPDATE novel SET click_num = click_num + 1 WHERE nid = #{nid}
+    </update>
+
+    <resultMap id="novelResultMap" type="NovelEntity" >
+        <id column="nid" property="nid" jdbcType="BIGINT" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="aid" property="aid" jdbcType="INTEGER" />
+        <result column="lid" property="lid" jdbcType="INTEGER" />
+        <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+        <result column="info" property="info" jdbcType="VARCHAR" />
+        <result column="score" property="score" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="cover" property="cover" jdbcType="VARCHAR" />
+        <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+        <result column="word_num" property="wordNum" jdbcType="INTEGER" />
+        <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+        <result column="recommend_num" property="recommendNum" jdbcType="INTEGER" />
+        <result column="chapter_num" property="chapterNum" jdbcType="INTEGER" />
+        <result column="recent_chapter_id" property="recentChapterId" jdbcType="BIGINT" />
+    </resultMap>
+</mapper>

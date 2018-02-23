@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reader" >
+
+    <insert id="insertReader" parameterType="ReaderEntity" useGeneratedKeys="true" keyProperty="rid">
+        INSERT INTO reader (reader_name, password, portrait)
+        VALUES (#{readerName}, #{password}, #{portrait})
+    </insert>
+
+    <select id="getReader" resultMap="readerResultMap">
+        SELECT * FROM reader WHERE reader_name = #{readerName} AND password = #{password}
+    </select>
+
+    <select id="getReaderByName" resultMap="readerResultMap">
+        SELECT reader.* FROM reader
+        WHERE reader_name = #{readerName}
+    </select>
+    
+    <select id="getReaderRoleByRid" resultType="String">
+        SELECT sys_role.name FROM sys_reader_roles
+        LEFT JOIN reader ON sys_reader_roles.reader_id = reader.rid
+        LEFT JOIN sys_role ON sys_reader_roles.roles_id = sys_role.id
+        WHERE reader.rid = #{rid}
+    </select>
+    
+    <update id="updatePassword">
+        UPDATE reader SET password = #{password} WHERE rid = #{rid}
+    </update>
+
+    <update id="updateAvatar">
+        UPDATE reader SET portrait = #{portrait} WHERE rid = #{rid}
+    </update>
+
+    <resultMap id="readerResultMap" type="ReaderEntity">
+        <id column="rid" property="rid" jdbcType="INTEGER"/>
+        <result column="reader_name" property="readerName" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="portrait" property="portrait" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

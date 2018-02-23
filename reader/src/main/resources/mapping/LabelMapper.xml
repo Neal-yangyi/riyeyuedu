@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="label" >
+    <select id="getLabelByNid" resultMap="labelResultMap">
+        SELECT label.* FROM novel INNER JOIN label ON novel.lid = label.lid
+        WHERE novel.nid = #{nid}
+    </select>
+    
+    <select id="getLabelByLid" resultMap="labelResultMap">
+        SELECT * FROM label WHERE lid = #{lid}
+    </select>
+
+    <resultMap id="labelResultMap" type="LabelEntity">
+        <id column="lid" property="lid" jdbcType="INTEGER"/>
+        <result column="label_name" property="labelName" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="post" >
+
+    <insert id="insertPost" parameterType="PostEntity" useGeneratedKeys="true" keyProperty="pid">
+        INSERT INTO post (nid, rid, like_num, theme, content, create_time, level, comment_num)
+        VALUES (#{nid}, #{rid}, #{likeNum}, #{theme}, #{content}, #{createTime}, #{level}, #{commentNum})
+    </insert>
+    
+    <select id="selectPostByNid" resultType="HashMap">
+        SELECT reader.*, novel.*, post.* FROM post
+        LEFT JOIN reader ON post.rid = reader.rid
+        LEFT JOIN novel ON post.nid = novel.nid
+        WHERE post.nid = #{nid}
+    </select>
+
+    <update id="addCommentNum">
+        UPDATE post SET comment_num = comment_num + 1 WHERE pid = #{pid}
+    </update>
+    
+    <update id="reduceCommentNum">
+        UPDATE post SET comment_num = comment_num - 1 WHERE pid = #{pid}
+    </update>
+    
+    <update id="addLikeNum">
+        UPDATE post SET like_num = like_num + 1 WHERE pid = #{pid}
+    </update>
+    
+    <update id="reduceLikeNum">
+        UPDATE post SET like_num = like_num - 1 WHERE pid = #{pid}
+    </update>
+    
+    <delete id="deletePost">
+        DELETE FROM post WHERE pid = #{pid}
+    </delete>
+
+    <resultMap id="postResultMap" type="PostEntity" >
+        <id column="pid" property="pid" jdbcType="BIGINT"/>
+        <result column="nid" property="nid" jdbcType="BIGINT"/>
+        <result column="rid" property="rid" jdbcType="INTEGER"/>
+        <result column="theme" property="theme" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="like_num" property="likeNum" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="level" property="level" jdbcType="INTEGER"/>
+        <result column="comment_num" property="commentNum" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <package name="com.riyeyuedu.entity"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="mapping/NovelMapper.xml"/>
+        <mapper resource="mapping/ChapterMapper.xml"/>
+        <mapper resource="mapping/AuthorMapper.xml"/>
+        <mapper resource="mapping/LabelMapper.xml"/>
+        <mapper resource="mapping/ReaderMapper.xml"/>
+        <mapper resource="mapping/BookCaseMapper.xml"/>
+        <mapper resource="mapping/RecordMapper.xml"/>
+        <mapper resource="mapping/PostMapper.xml"/>
+        <mapper resource="mapping/CommentMapper.xml"/>
+    </mappers>
+</configuration>

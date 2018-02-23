@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/myStyle.css}">
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+    <script th:src="@{/js/MyJs.js}"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="ywtop">
+            <div class="nri" th:if="${session.reader == null}" onkeydown="var e=window.event || arguments[0];if(e.keyCode===13){ login() }">
+                <div class="cc">
+                    <div class="txt">账号：</div>
+                    <div class="inp">
+                        <input type="text" name="reader_name" id="reader_name">
+                    </div>
+                </div>
+                <div class="cc">
+                    <div class="txt">密码：</div>
+                    <div class="inp">
+                        <input type="text" name="password" id = "reader_password"/>
+                    </div>
+                </div>
+                <div class="frii">
+                    <input type="submit" value="登 录" id = "login" onclick="login()"/>
+                </div>
+                <div class="ccc">
+                    <a th:href="@{/toRegister}" style="color: dimgrey; font-size: 15px;">用户注册</a>
+                </div>
+            </div>
+            <div class="nri" th:if="${session.reader != null}">
+                Hi..<a th:href="@{/user/home}" th:text="${session.reader.getReaderName()}"></a>
+                <a href="javascript:;" onclick="logout()">登出</a>
+            </div>
+        </div>
+        <div class="header">
+            <div class="logo">
+                <a th:href="@{/}"><img src="http://nealcaffrey.oss-cn-beijing.aliyuncs.com/cover/riye.png" th:alt="LOGO" style="width: 230px; height: 58px"></a>
+            </div>
+            <div class="search">
+                <form action="/novel/search">
+                    <input type="search" class="txt" name = "key" placeholder="小说名称、作者" />
+                    <input type="submit" class="btn" value="搜索" />
+                </form>
+            </div>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/bookCase">我的书架</a></li>
+                <li><a href="/novel/class/1">玄幻奇幻</a></li>
+                <li><a href="/novel/class/2">武侠仙侠</a></li>
+                <li><a href="/novel/class/3">都市言情</a></li>
+                <li><a href="/novel/class/4">历史军事</a></li>
+                <li><a href="/novel/class/5">科幻灵异</a></li>
+                <li><a href="/novel/class/6">网游竞技</a></li>
+                <li><a href="/novel/class/7">女频频道</a></li>
+                <li><a href="/novel/rankingList">排行榜单</a></li>
+                <li><a href="/novel/complete">完本小说</a></li>
+                <li><a href="/record">阅读记录</a></li>
+            </ul>
+        </div>
+        <tabel class = "grid" width = "580" align = "center">
+            <caption>新用户注册！</caption>
+            <tbody>
+                <tr>
+                    <td class = "odd" width="25%">
+                        笔名 <span class="hottext">(必填)</span>
+                    </td>
+                    <td class="even">
+                        <input type="text" name = "reader_name" style="width: 160px" th:size="25" th:maxlength="30" id="username">
+                        <span class="usermsg">请输入长度不少于5位的字母、数字</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class = "odd" width="25%">
+                        密码 <span class="hottext">(必填)</span>
+                    </td>
+                    <td class="even">
+                        <input type="text" name = "password" style="width: 160px" th:size="25" th:maxlength="30" id="password">
+                        <span class="usermsg">请输入长度不少于6位的密码</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class = "odd" width="25%">
+                        重复密码 <span class="hottext">(必填)</span>
+                    </td>
+                    <td class="even">
+                        <input type="text" name = "password2" style="width: 160px" th:size="25" th:maxlength="30" id="password2">
+                        <span class="usermsg">请再次输入密码</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class = "odd" width="25%">
+                    </td>
+                    <td class="even">
+                        <input type="submit" class="button" value="提交" onclick="register()">
+                    </td>
+                </tr>
+            </tbody>
+        </tabel>
+    </div>
+</body>
+</html>

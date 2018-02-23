@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="comment" >
+    
+    <insert id="insertComment" parameterType="CommentEntity" useGeneratedKeys="true" keyProperty="cid">
+        INSERT INTO comment (owner_reader_id, target_reader_id, content, like_num, create_time, parent_id, flag)
+        VALUES (#{owner_reader_id}, #{target_reader_id}, #{content}, #{like_num}, #{create_time}, #{parent_id}, #{flag})
+    </insert>
+
+
+
+    <resultMap id="commentResultMap" type="CommentEntity" >
+        <id column="cid" property="cid" jdbcType="BIGINT"/>
+        <result column="owner_reader_id" property="ownerReaderId" jdbcType="INTEGER"/>
+        <result column="target_reader_id" property="targetReaderId" jdbcType="INTEGER"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="like_num" property="likeNum" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="BIGINT"/>
+        <result column="flag" property="flag" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>

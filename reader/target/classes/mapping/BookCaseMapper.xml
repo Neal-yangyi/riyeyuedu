@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="bookCase">
+
+    <insert id="insertBookCase" parameterType="BookCaseEntity" useGeneratedKeys="true" keyProperty="bid">
+        INSERT INTO bookcase (nid, rid) VALUES (#{nid}, #{rid})
+    </insert>
+    
+    <delete id="deleteBookCase">
+        DELETE FROM bookcase WHERE nid = #{nid} AND rid = #{rid}
+    </delete>
+
+    <resultMap id="bookCaseResultMap" type="BookCaseEntity" >
+        <id column="bid" property="bid" jdbcType="INTEGER"/>
+        <result column="nid" property="nid" jdbcType="BIGINT"/>
+        <result column="rid" property="rid" jdbcType="INTEGER"/>
+    </resultMap>
+
+</mapper>

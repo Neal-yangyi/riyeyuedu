@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="record" >
+
+    <insert id="insertRecord" parameterType="RecordEntity" useGeneratedKeys="true" keyProperty="recordId">
+        INSERT INTO record (rid, nid, cid) VALUES (#{rid}, #{nid}, #{cid})
+    </insert>
+    
+    <select id="getRecordByRid" resultType="HashMap">
+        SELECT novel.*, chapter.chapter_name, chapter.cid FROM record
+        INNER JOIN novel ON record.nid = novel.nid
+        INNER JOIN chapter ON record.cid = chapter.cid
+        WHERE rid = #{rid}
+        ORDER BY record_id DESC
+    </select>
+
+    <select id="getRecordByNid" resultMap="recordResultMap">
+        SELECT * FROM record WHERE rid = #{rid} AND nid = #{nid}
+    </select>
+    
+    <select id="getOldestRecord" resultMap="recordResultMap">
+        SELECT * FROM record WHERE rid = #{rid} ORDER BY record_id asc LIMIT 1
+    </select>
+    
+    <delete id="deleteRecord">
+        DELETE FROM record WHERE record_id = #{record_id}
+    </delete>
+    
+    <update id="updateRecord">
+        UPDATE record SET cid = #{cid} WHERE record_id = #{recordId}
+    </update>
+
+    <resultMap id="recordResultMap" type="RecordEntity" >
+        <id column="record_id" property="recordId" jdbcType="BIGINT" />
+        <result column="rid" property="rid" jdbcType="INTEGER" />
+        <result column="nid" property="nid" jdbcType="BIGINT" />
+        <result column="cid" property="cid" jdbcType="BIGINT" />
+    </resultMap>
+
+</mapper>

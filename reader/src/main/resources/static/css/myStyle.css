@@ -1,0 +1,742 @@
+body {
+    background-color: #E9FAFF;
+    color: #555;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: #6F78A7;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.wrapper {
+    text-align: center;
+    background-color: #ECffff;
+}
+
+.ywtop {
+    width: 100%;
+    height: 29px;
+    background-color: lightgrey;
+}
+
+.nri {
+    float: right;
+    width: 500px;
+    height: 28px;
+    margin-right: 180px;
+}
+
+.ccc {
+    width: 75px;
+    display: inline-block;
+    float: right;
+    padding-top: 5px;
+}
+
+.cc {
+    width: 155px;
+    height: 28px;
+    float: left;
+    margin: 2px;
+    font-size: 3px;
+    color: dimgrey;
+}
+
+.cc .txt {
+    width: 45px;
+    height: 28px;
+    display: inline-block;
+}
+
+.cc .inp {
+    width: 90px;
+    height: 25px;
+    display: inline-block;
+}
+
+.cc .inp #reader_name {
+    width: 90px;
+    height: 17px;
+}
+
+.cc .inp #reader_password {
+    width: 90px;
+    height: 17px;
+}
+
+.frii {
+    width: 55px;
+    height: 24px;
+    display: inline-block;
+    float: left;
+    margin: 2px;
+}
+
+.header {
+    width: 980px;
+    height: 72px;
+    margin: 0 auto;
+}
+
+.header .logo {
+    float: left;
+    margin: 5px;
+}
+
+.search {
+    float: right;
+    margin-top: 20px;
+}
+
+.search .txt {
+    width: 350px;
+    height: 35px;
+}
+
+.search form .btn {
+    background-color: lightgrey;
+    border: none;
+    color: white;
+    padding: 9px 33px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.nav {
+    width: 980px;
+    height: 40px;
+    margin: 10px auto;
+    background-color: #7AC5CD;
+    text-align: center;
+}
+
+.nav ul {
+    margin: 0 auto;
+}
+
+.nav ul li {
+    float: left;
+    margin: 10px 6px;
+    font-size: 16px;
+}
+
+.nav ul li a {
+    color: white;
+    font-weight: 200;
+}
+
+.main {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.hotcontent {
+    width: 980px;
+    height: 356px;
+}
+
+.hotcontent .left {
+    width: 690px;
+    height: 346px;
+    background-color: #FEF9EF;
+    border: 3px solid #C3DFEA;
+    display: inline-block;
+    float: left;
+}
+
+.hotcontent .left .item {
+    display: inline-block;
+    float: left;
+    width: 325px;
+    height: 164px;
+    padding: 10px 0 0 10px;
+}
+
+.hotcontent .left .item .img{
+    width: 120px;
+    height: 154px;
+    display: inline-block;
+    float: left;
+}
+
+.hotcontent .left .item dl {
+    width: 195px;
+    height: 153px;
+    display: inline-block;
+    float: right;
+    margin: 0;
+}
+
+.hotcontent .left .item dl dt {
+    width: 195px;
+    height: 26px;
+    display: inline-block;
+    border-bottom: 1px dotted #A6D3E8;
+}
+
+.hotcontent .left .item dl dt span {
+    float: right;
+    color: #B3B3B3;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.hotcontent .left .item dl dt a {
+    float: left;
+    color: #6F78A7;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.hotcontent .left .item dl dd {
+    margin: 0;
+    text-align: left;
+    text-indent: 30px;
+    color: #555;
+    overflow: hidden;
+}
+
+.hotcontent .right {
+    width: 271px;
+    height: 346px;
+    float: right;
+    display: inline-block;
+    text-align: left;
+    border: 3px solid #C3DFEA;
+    background-color: #FEF9EF;
+}
+
+.hotcontent .right h4 {
+    margin: 0;
+    padding: 0 0 0 10px;
+    border-bottom: 1px solid #DDD;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+    background-color: #E1ECED;
+}
+
+.hotcontent .right ul li .s2 a{
+    color: #6F78A7;
+}
+
+.hotcontent .right ul li .s1, .s5 {
+    color: #555;
+}
+
+.hotcontent .right ul {
+     padding: 1px 10px;
+    margin: 0;
+ }
+
+.hotcontent .right ul li {
+    width: 245px;
+    height: 28px;
+    border-bottom: 1px solid #DDD;
+    padding: 5px 0 0;
+    line-height: 28px;
+    font-size: 12px;
+}
+
+.hotcontent .right ul li .s5 {
+    float: right;
+}
+
+.novelslist {
+    margin: 10px auto;
+    border: 3px solid #A6D3E8;
+    width: 968px;
+    height: 300px;
+    padding: 3px;
+    background: #FEF9EF;
+}
+
+.novelslist .content {
+    width: 315px;
+    height: 288px;
+    border-right: dotted 1px #A6D3E8;
+    float: left;
+    text-align: left;
+    padding: 0 3px;
+}
+
+.novelslist .content h2 {
+    border-bottom: solid 1px #A6D3E8;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 5px;
+    line-height: 25px;
+    height: 25px;
+    overflow: hidden;
+    margin: 0;
+    background-color: #F6F8FE;
+    color: #555;
+}
+
+.novelslist .content .top {
+    width: 315px;
+    height: 96px;
+    margin: auto;
+    padding: 0;
+}
+
+.novelslist .content .top .image {
+    padding: 10px 0 0 5px;
+    float: left;
+    width: 71px;
+}
+
+.novelslist .content .top dl {
+    width: 219px;
+    height: 85px;
+    padding: 10px 0 0 0;
+    margin: 0;
+    display: inline-block;
+    float: right;
+}
+
+.novelslist .content .top dl dt a {
+    font-size: 15px;
+    font-weight: bold;
+    color: #6F78A7;
+}
+
+.novelslist .content .top dl dd {
+    width: 219px;
+    height: 60px;
+    margin: 0;
+}
+
+.novelslist .content ul {
+    width: 315px;
+    padding: 10px 0 0 0;
+    margin: 0;
+}
+
+.novelslist .content ul li {
+    color: #B3B3B3;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    overflow: hidden;
+    float: left;
+    width: 155px;
+    padding: 5px 0 0 0;
+    border-bottom: solid 1px #DDDDDD;
+}
+
+.novelslist .content ul li a {
+    color: #6F78A7;
+}
+
+.novelslist .border {
+    border: 0;
+}
+
+.newscontent {
+    width: 980px;
+    margin: auto;
+    padding: 0;
+}
+
+.newscontent .left {
+    border: 3px solid #88C6E5;
+    float: left;
+    width: 695px;
+    background: #E1ECED;
+    margin: auto;
+    padding: 0;
+    text-align: left;
+}
+
+.newscontent .left h2 {
+    margin: 0;
+    overflow: hidden;
+    padding: 0 0 0 10px;
+    background-color: #A6D3E8;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: solid 1px #DDDDDD;
+}
+
+.newscontent .left ul {
+    padding: 10px;
+    margin: auto;
+}
+
+.newscontent .left ul li {
+    padding: 5px 0 0 0;
+    border-bottom: solid 1px #DDDDDD;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    list-style: none outside none;
+}
+
+.newscontent .left li .s1 {
+    width: 75px;
+}
+
+.newscontent .left li .s2 {
+    width: 165px;
+}
+
+.newscontent .left li .s3 {
+    width: 300px;
+}
+.newscontent .left li .s4 {
+    color: #B3B3B3;
+    width: 90px;
+    text-align: right;
+}
+
+.newscontent .left li .s5 {
+    color: #B3B3B3;
+    float: right;
+    text-align: right;
+}
+
+.newscontent .left li {
+    line-height: 25px;
+}
+
+.newscontent .left li span {
+    float: left;
+    display: inline-block;
+}
+
+.newscontent .left li a {
+    color: #6F78A7;
+}
+
+.newscontent .right {
+    float: right;
+    width: 265px;
+    border: 3px solid #88C6E5;
+    background: #E1ECED;
+    margin: auto;
+    padding: 0;
+}
+
+.newscontent .right h2 {
+    margin: 0;
+    overflow: hidden;
+    padding: 0 0 0 10px;
+    background-color: #A6D3E8;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: solid 1px #DDDDDD;
+}
+
+.newscontent .right ul {
+    padding: 10px;
+    margin: 0;
+}
+
+.newscontent .right ul li {
+    padding: 5px 0 0 0;
+    border-bottom: solid 1px #DDDDDD;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+}
+
+.newscontent .right ul li .s1 {
+    width: 65px;
+}
+
+.newscontent .right ul li .s5 {
+    float: right;
+}
+
+.newscontent .right ul li span {
+    display: inline-block;
+    float: left;
+}
+
+.newscontent .right ul li span a {
+   color: #6F78A7;;
+}
+
+#hotcontent .ll {
+    background-color: #FEF9EF;
+    border: 3px solid #C3DFEA;
+    margin: 10px auto;
+    padding: 5px;
+    width: 964px;
+    height: 320px;
+    overflow: hidden;
+}
+
+.hotcontent .ll .item {
+    width: 315px;
+    float: left;
+    padding: 5px 0 0 5px;
+    display: inline-block;
+}
+
+.hotcontent .ll .item .img{
+    float: left;
+    width: 120px;
+}
+
+.hotcontent .ll .item dl {
+    padding: 0 5px 0 0;
+    float: right;
+    width: 180px;
+}
+
+.hotcontent .ll .item dl dt {
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    font-size: 14px;
+    border-bottom: dotted 1px #6191D0;
+    font-weight: bold;
+}
+
+.hotcontent .ll .item dl dt span {
+    float: right;
+    color: #B3B3B3;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.hotcontent .ll .item dl dt a {
+    float: left;
+    color: #6F78A7;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.hotcontent .ll .item dl dd {
+    margin: 0;
+    text-align: left;
+    text-indent: 30px;
+    color: #555;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.box_con {
+    border: 2px solid #88C6E5;
+    overflow: hidden;
+    width: 976px;
+    margin: 10px auto;
+}
+
+.con_top {
+    border-bottom: #88C6E5 1px solid;
+    text-align: left;
+    padding: 0 10px;
+    line-height: 40px;
+    height: 40px;
+    background-color: #E1ECED;
+}
+
+.con_top span {
+    font-size: 12px;
+}
+
+.box_con .cover {
+    display: inline-block;
+    float: left;
+    margin: 10px;
+}
+
+.maininfo {
+    width: 800px;
+    float: right;
+    text-align: left;
+}
+
+.info {
+    font-size: 16px;
+    height: 100px;
+    border-bottom: 1px dashed #C3DFEA;
+    padding: 5px;
+}
+
+.info h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.book {
+    display: inline-block;
+    float: left;
+    width: 350px;
+    height: 27px;
+}
+
+.intro {
+    float: bottom;
+}
+
+.intro p {
+    text-align: left;
+    text-indent: 2em;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.box_con .list {
+    padding: 2px;
+    width: 976px;
+}
+
+.box_con .list dl {
+    float: left;
+    overflow: hidden;
+    padding-bottom: 1px;
+    margin: auto;
+    width: 972px;
+}
+
+.box_con .list dl dt {
+    background: none repeat scroll 0 0 #C3DFEA;
+    display: inline;
+    float: left;
+    font-size: 14px;
+    line-height: 28px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    width: 98%;
+    margin: auto auto 5px;
+    padding: 5px 10px
+}
+
+.box_con .list dl dd {
+    border-bottom: 1px dashed #CCC;
+    display: inline;
+    float: left;
+    height: 25px;
+    line-height: 200%;
+    font-size: 13px;
+    overflow: hidden;
+    text-align: left;
+    text-indent: 10px;
+    vertical-align: middle;
+    width: 29%;
+}
+
+.bookname h1{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.bookname .bottem1 a, span {
+}
+
+.box_con .content {
+    font-size:25px;
+    letter-spacing: 0.2em;
+    line-height: 150%;
+    padding-top: 15px;
+    width: 85%;
+    margin: auto;;
+    text-indent: 52px;
+    border-bottom: 1px dashed #CCC;
+    border-top: 1px dashed #CCC;
+}
+
+.bottem2 {
+    margin: 10px;
+}
+
+.link {
+    font-size: 20px;
+    margin: 5px;
+}
+
+.novelslist2 {
+    margin: 10px auto;
+    border: 3px solid #A6D3E8;
+    width: 974px;
+    background: #FEF9EF;
+}
+
+.novelslist2 h2 {
+    margin: 0;
+    background-color: #A6D3E8;
+    border-bottom: 1px solid #DDDDDD;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    width: 968px;
+    line-height: 30px;
+    overflow: hidden;
+    padding: 0 0 0 8px;
+    text-align: left;
+}
+
+.novelslist2 ul {
+    padding: 10px;
+}
+
+.novelslist2 li {
+    padding: 5px 0 0 0;
+    border-bottom: solid 1px #DDDDDD;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+}
+
+.novelslist2 li .s1 {
+    width: 12%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.novelslist2 li .s2 {
+    width: 20%;
+    overflow: hidden;
+    text-align: left;
+}
+
+.novelslist2 li .s3 {
+    width: 33%;
+    overflow: hidden;
+}
+
+.novelslist2 li .s4 {
+    width: 15%;
+    overflow: hidden;
+}
+
+.novelslist2 li .s5 {
+    color: red;
+    width: 10%;
+    overflow: hidden;
+}
+
+.novelslist2 li .s6 {
+    width: 10%;
+    overflow: hidden;
+}
+
+.novelslist2 li span {
+    float: left;
+    display: inline-block;
+}
+

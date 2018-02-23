@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>排行榜单</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/myStyle.css}">
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+    <script th:src="@{/js/MyJs.js}"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="ywtop">
+            <div class="nri" th:if="${session.reader == null}" onkeydown="var e=window.event || arguments[0];if(e.keyCode===13){ login() }">
+                <div class="cc">
+                    <div class="txt">账号：</div>
+                    <div class="inp">
+                        <input type="text" name="reader_name" id="reader_name">
+                    </div>
+                </div>
+                <div class="cc">
+                    <div class="txt">密码：</div>
+                    <div class="inp">
+                        <input type="text" name="password" id = "reader_password"/>
+                    </div>
+                </div>
+                <div class="frii">
+                    <input type="submit" value="登 录" id = "login" onclick="login()"/>
+                </div>
+                <div class="ccc">
+                    <a th:href="@{/toRegister}" style="color: dimgrey; font-size: 15px;">用户注册</a>
+                </div>
+            </div>
+            <div class="nri" th:if="${session.reader != null}">
+                Hi..<a th:href="@{/user/home}" th:text="${session.reader.getReaderName()}"></a>
+                <a href="javascript:;" onclick="logout()">登出</a>
+            </div>
+        </div>
+        <div class="header">
+            <div class="logo">
+                <a th:href="@{/}"><img src="http://nealcaffrey.oss-cn-beijing.aliyuncs.com/cover/riye.png" th:alt="LOGO" style="width: 230px; height: 58px"></a>
+            </div>
+            <div class="search">
+                <form action="/novel/search">
+                    <input type="search" class="txt" name = "key" placeholder="小说名称、作者" />
+                    <input type="submit" class="btn" value="搜索" />
+                </form>
+            </div>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/bookCase">我的书架</a></li>
+                <li><a href="/novel/class/1">玄幻奇幻</a></li>
+                <li><a href="/novel/class/2">武侠仙侠</a></li>
+                <li><a href="/novel/class/3">都市言情</a></li>
+                <li><a href="/novel/class/4">历史军事</a></li>
+                <li><a href="/novel/class/5">科幻灵异</a></li>
+                <li><a href="/novel/class/6">网游竞技</a></li>
+                <li><a href="/novel/class/7">女频频道</a></li>
+                <li><a href="/novel/rankingList">排行榜单</a></li>
+                <li><a href="/novel/complete">完本小说</a></li>
+                <li><a href="/record">阅读记录</a></li>
+            </ul>
+        </div>
+        <div class="main">
+        <div class="novelslist2">
+            <h2>全本小说列表</h2>
+            <ul>
+                <li>
+                    <span class="s1">作品分类</span>
+                    <span class="s2">作品名称</span>
+                    <span class="s3">最新章节</span>
+                    <span class="s4">作者</span>
+                    <span class="s5">更新时间</span>
+                    <span class="s6">状态</span>
+                </li>
+                <li th:each="novel : ${scoreNovel}">
+                    <span class="s1">
+                        <a th:href="@{/novel/class/{lid}(lid = ${novel.get('lid')})}" th:text="'[' + ${novel.get('label_name')} + ']'"></a>
+                    </span>
+                    <span class="s2">
+                            <a th:href="@{/novel/{nid}(nid = ${novel.get('nid')})}" th:text="${novel.get('title')}"></a>
+                    </span>
+                    <span class="s3">
+                            <a th:href="@{/chapter/{nid}/{cid}(nid = ${novel.get('nid')}, cid = ${novel.get('recent_chapter_id')})}" th:text="${novel.get('chapter_name')}"></a>
+                    </span>
+                    <span class="s4" th:text="${novel.get('author_name')}"></span>
+                    <span class="s5" th:text="${novel.get('update_time')}"></span>
+                    <span class="s6" th:if="${novel.get('state') == 1}" th:text="完结"></span>
+                    <span class="s6" th:if="${novel.get('state') == 0}" th:text="连载中"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

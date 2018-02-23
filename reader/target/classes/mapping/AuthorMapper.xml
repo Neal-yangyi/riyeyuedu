@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="author" >
+
+    <select id="getAuthorByAid" resultMap="authorResultMap">
+        SELECT * FROM author WHERE aid = #{aid}
+    </select>
+    
+    <select id="getAuthorByAuthorName" resultMap="authorResultMap">
+        SELECT * FROM author WHERE author_name = #{authorName}
+    </select>
+
+    <insert id="insertAuthor" parameterType="AuthorEntity" useGeneratedKeys="true" keyProperty="aid">
+        INSERT INTO author (author_name, password, phone, level)
+        VALUES (#{authorName}, #{password}, #{phone}, #{level})
+    </insert>
+
+    <resultMap id="authorResultMap" type="AuthorEntity" >
+        <id column="aid" property="aid" jdbcType="INTEGER" />
+        <result column="author_name" property="authorName" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="level" property="level" jdbcType="INTEGER" />
+    </resultMap>
+
+</mapper>
