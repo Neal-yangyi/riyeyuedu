@@ -35,6 +35,8 @@ public class NovelEntity {
 
     private Long recentChapterId;
 
+    private int allow;
+
     public Long getNid() {
         return nid;
     }
@@ -169,5 +171,13 @@ public class NovelEntity {
 
     public void setRecentChapterId(Long recentChapterId) {
         this.recentChapterId = recentChapterId;
+    }
+
+    public int getAllow() {
+        return allow;
+    }
+
+    public void setAllow(int allow) {
+        this.allow = allow;
     }
 }

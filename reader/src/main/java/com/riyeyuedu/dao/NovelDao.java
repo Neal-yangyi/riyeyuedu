@@ -2,6 +2,7 @@ package com.riyeyuedu.dao;
 
 import com.riyeyuedu.entity.BookCaseEntity;
 import com.riyeyuedu.entity.NovelEntity;
+import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -79,11 +80,15 @@ public class NovelDao {
         return sqlSession.selectList("novel.getNovelByTitleWidly", key);
     }
 
-    public List<Map<String, Object>> getNovelByAuthor(SqlSession sqlSession, String key) {
-        return sqlSession.selectList("novel.getNovelByAuthor", key);
+    public List<Map<String, Object>> getNovelByAuthorName(SqlSession sqlSession, String authorName) {
+        return sqlSession.selectList("novel.getNovelByAuthor", authorName);
     }
 
     public NovelEntity getOneInBookCase(SqlSession sqlSession, BookCaseEntity bookCase) {
         return sqlSession.selectOne("novel.getOneInBookCase", bookCase);
+    }
+
+    public List<Map<String, Object>> getNotAllowedNovel(SqlSession sqlSession) {
+        return sqlSession.selectList("novel.getNotAllowedNovel");
     }
 }

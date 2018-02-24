@@ -79,7 +79,7 @@ function register() {
         success: function (data) {
             if ("1" === data) {
                 alert("注册成功");
-                window.location.href = "/home";
+                window.location.href = "/user/home";
             } else if ("0" === data) {
                 alert("用户名已被注册");
             }
@@ -94,6 +94,7 @@ function registerAuthor() {
     var author_name = $("#author_name").val();
     var author_password = $("#author_password").val();
     var author_password2 = $("#author_password2").val();
+    var author_phone = $("#phone").val();
 
     if (author_name.toString().trim() ==="" || author_name.toString().trim() === null) {
         alert("笔名不能为空");
@@ -110,6 +111,10 @@ function registerAuthor() {
         return;
     }
 
+    if (author_phone === "" && author_phone === null) {
+        alert("手机号不能为空");
+    }
+
     if (author_password !== author_password2) {
         alert("两次密码不一致，请重新输入");
         return;
@@ -119,17 +124,17 @@ function registerAuthor() {
         type: "post",
         url: "/registerAuthor",
         dataType: "text",
-        data: {readerName: author_name, password: author_password},
+        data: {authorName: author_name, password: author_password, phone: author_phone},
         success: function (data) {
             if ("1" === data) {
                 alert("注册成功");
                 window.location.href = "/toAuthorHome";
             } else if ("0" === data) {
-                alert("改笔名已被注册");
+                alert("该笔名已被注册");
             }
         },
         error: function (xhr, status, error) {
-            alert(status);
+            alert(error);
         }
     })
 }

@@ -27,6 +27,10 @@ public class ChapterService {
         this.chapterDao = chapterDao;
     }
 
+    public Boolean addChapter(ChapterEntity chapter) {
+        return chapterDao.addChapter(sqlSession, chapter);
+    }
+
     public List<ChapterEntity> getDirectoryByNid(Long nid) {
         return chapterDao.getDirectoryByNid(sqlSession, nid);
     }
@@ -41,5 +45,9 @@ public class ChapterService {
 
     public ChapterEntity getNewChapter(Long nid) {
         return chapterDao.getNewChapter(sqlSession, nid);
+    }
+
+    public Boolean chapterAllowed(ChapterEntity chapter) {
+        return chapterDao.chapterAllowed(sqlSession, chapter);
     }
 }

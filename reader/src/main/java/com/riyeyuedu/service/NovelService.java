@@ -91,12 +91,20 @@ public class NovelService {
     public List<Map<String, Object>> search(String key) {
         List<Map<String, Object>> novels = novelDao.getNovelByTitleWidly(sqlSession, key);
         if (novels.size() == 0) {
-            novels = novelDao.getNovelByAuthor(sqlSession, key);
+            novels = novelDao.getNovelByAuthorName(sqlSession, key);
         }
         return novels;
     }
 
     public NovelEntity getOneInBookCase(BookCaseEntity bookCase) {
         return novelDao.getOneInBookCase(sqlSession, bookCase);
+    }
+
+    public List<Map<String, Object>> getNovelByAuthorName(String authorName) {
+        return novelDao.getNovelByAuthorName(sqlSession, authorName);
+    }
+
+    public List<Map<String, Object>> getNotAllowedNovel() {
+        return novelDao.getNotAllowedNovel(sqlSession);
     }
 }

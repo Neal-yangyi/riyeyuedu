@@ -22,7 +22,10 @@ public class AuthorController {
     @RequestMapping(value = "/registerAuthor", method = RequestMethod.POST)
     @ResponseBody
     public String registerAuthor(AuthorEntity author, HttpSession session) {
+        author.setLevel(0);
+
         if (authorService.getAuthorByAuthorName(author) == null) {
+
             authorService.addAuthor(author);
             session.setAttribute("author", author);
             return "1";

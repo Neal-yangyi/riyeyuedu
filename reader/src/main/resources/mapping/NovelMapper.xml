@@ -3,8 +3,8 @@
 <mapper namespace="novel" >
     
     <insert id="insertNovel" parameterType="NovelEntity" useGeneratedKeys="true" keyProperty="nid">
-        INSERT INTO novel (title, aid, lid, did, introduction, info, score, state, create_time, update_time, word_num, click_num, recommend_num, chapter_num, cover, recent_chapter_id)
-        VALUES (#{title}, #{aid}, #{lid}, #{did}, #{introduction}, #{info}, #{score}, #{state}, #{createTime}, #{updateTime}, #{wordNum}, #{clickNum}, #{recommendNum}, #{chaperNum}, #{cover}, #{recentChapterId})
+        INSERT INTO novel (title, aid, lid, did, introduction, info, score, state, create_time, update_time, word_num, click_num, recommend_num, chapter_num, cover, recent_chapter_id, allow)
+        VALUES (#{title}, #{aid}, #{lid}, #{did}, #{introduction}, #{info}, #{score}, #{state}, #{createTime}, #{updateTime}, #{wordNum}, #{clickNum}, #{recommendNum}, #{chaperNum}, #{cover}, #{recentChapterId}, #{allow})
     </insert>
     
     <select id="getNovelByNid" resultMap="novelResultMap">
@@ -30,7 +30,7 @@
         SELECT novel.*, author.author_name, chapter.chapter_name
         FROM novel RIGHT JOIN author ON novel.aid = author.aid
             INNER JOIN chapter ON novel.recent_chapter_id = chapter.cid
-        WHERE author_name = #{key}
+        WHERE author_name = #{authorName}
     </select>
 
     <select id="getNovelByLid" resultType="HashMap">
@@ -111,6 +111,16 @@
         SELECT * FROM novel
         RIGHT JOIN bookcase ON novel.nid = bookcase.nid
         WHERE bookcase.nid = #{nid} AND bookcase.rid = #{rid}
+    </select>
+
+    <select id="getNovelByAid" resultMap="novelResultMap">
+        SELECT * from novel WHERE aid = #{aid}
+    </select>
+    
+    <select id="getNotAllowedNovel" resultType="HashMap">
+        SELECT novel.*, author.* FROM novel
+        INNER JOIN author ON novel.aid = author.aid
+        WHERE novel.allow = 0;
     </select>
     
     <update id="addClickNum">

@@ -3,8 +3,8 @@
 <mapper namespace="chapter" >
 
     <insert id="insertChapter" parameterType="ChapterEntity" useGeneratedKeys="true" keyProperty="cid">
-        INSERT INTO chapter (nid, chapter_name, content, creat_time, word_num)
-        VALUES (#{nid}, #{chapterName}, #{content}, #{createTime}, #{wordNum})
+        INSERT INTO chapter (nid, chapter_name, content, create_time, word_num, allow)
+        VALUES (#{nid}, #{chapterName}, #{content}, #{createTime}, #{wordNum}, #{allow})
     </insert>
 
     <select id="getDirectoryByNid" resultMap="chapterResultMap">
@@ -29,12 +29,21 @@
         LIMIT 1
     </select>
 
+    <select id="getNotAllowedChapter" resultMap="chapterResultMap">
+        SELECT * FROM chapter WHERE allow = 0 AND nid = #{nid};
+    </select>
+
+    <update id="chapterAllowed">
+        UPDATE chapter SET allow = 1 WHERE nid = #{nid} AND cid = #{cid}
+    </update>
+
     <resultMap id="chapterResultMap" type="ChapterEntity" >
         <id column="cid" property="cid" jdbcType="BIGINT" />
         <result column="nid" property="nid" jdbcType="BIGINT" />
         <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
-        <result column="creat_time" property="createTime" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
         <result column="words_num" property="wordsNum" jdbcType="INTEGER" />
+        <result column="allow" property="allow" jdbcType="INTEGER" />
     </resultMap>
 
 </mapper>

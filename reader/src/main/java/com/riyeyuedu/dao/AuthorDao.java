@@ -15,7 +15,7 @@ public class AuthorDao {
     }
 
     public Boolean addAuthor(SqlSession sqlSession, AuthorEntity author) {
-        int addNum = sqlSession.insert("author.insertAuthor");
+        int addNum = sqlSession.insert("author.insertAuthor", author);
         return addNum == 1;
     }
 }

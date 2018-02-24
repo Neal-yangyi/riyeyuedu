@@ -23,7 +23,7 @@ public class AuthorEntity {
         return authorName;
     }
 
-    public void setAuthorNameorName(String name) {
+    public void setAuthorName(String authorName) {
         this.authorName = authorName;
     }
 

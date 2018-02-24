@@ -13,6 +13,8 @@ public class ChapterEntity {
 
     private String content;
 
+    private int allow;
+
     public Long getCid() {
         return cid;
     }
@@ -59,5 +61,13 @@ public class ChapterEntity {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    public int getAllow() {
+        return allow;
+    }
+
+    public void setAllow(int allow) {
+        this.allow = allow;
     }
 }
